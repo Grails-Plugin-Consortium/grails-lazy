@@ -3,11 +3,31 @@ Lazy Initialization in Grails Broken?!
 
 Grails
 ======
-Start the grails app `grails-lazy-isse`
 1. Start the spring boot app `grails-lazy-issue` via `./gradlew bootRun`
 2. Notice the bean wiring output is logged during boot time
 
 The lazy beans are being eagerly loaded.
+
+### Workaround?
+
+Stop application and uncomment resources.groovy code and restart.
+
+```
+     fooService(FooService){ bean ->
+            bean.lazyInit = true
+        }
+```
+
+The bean is now loaded lazily, but only because the service bean is lazy loaded.
+
+Adding the following causes the bean to still be eagerly loaded
+
+```__
+     sampleBean(SampleBean){ bean ->
+         bean.lazyInit = true
+     }
+```
+
  
 
 Spring Boot 
