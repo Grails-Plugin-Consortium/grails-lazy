@@ -10,9 +10,9 @@ beans = {
 //    }
 
 //    This does not work
-//    sampleBean(SampleBean){ bean ->
-//        bean.lazyInit = true
-//    }
+    sampleBean(SampleBean){ bean ->
+        bean.lazyInit = true
+    }
 
 }
 
